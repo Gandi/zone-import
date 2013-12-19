@@ -16,6 +16,7 @@ multiple times will result in the same zone names being created
 from __future__ import unicode_literals, print_function
 
 import sys
+import os.path
 import argparse
 
 from xmlrpclib import ServerProxy, Fault
@@ -88,7 +89,7 @@ def import_zone(apikey, file_):
 
     """
 
-    zone_name = file_.name
+    zone_name = os.path.basename(file_.name)
     contents = file_.read()
 
     sys.stdout.write('* %s (%d line(s)) ' % (zone_name, contents.count('\n')))
